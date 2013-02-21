@@ -3,4 +3,5 @@
  *= require 'foundation/stylesheets/app.css'
  *= require 'my_style.css'
  *= require 'users'
- */
+ *= require 'tables'
+*/

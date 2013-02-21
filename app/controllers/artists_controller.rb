@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_filter :check_if_admin, :only => [:show, :update, :new]
+  before_filter :check_if_admin, :only => [:create, :update, :new, :edit]
 
   def index
     @artists = Artist.order(:name)
@@ -7,7 +7,6 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
-    render :show
   end
 
   def edit
@@ -19,10 +18,6 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
 
-  def check_if_admin
-    redirect_to(root_path) if @auth.nil? || !@auth.is_admin # if you're not logged or you're not an admin
-  end
-
   def update
     artist = Artist.find(params[:id])
     artist.update_attributes(params[:artist])
@@ -30,8 +25,11 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.create(params[:artist])
-    redirect_to(artists_path)
+    @artist = Artist.new(params[:artist])
+    if @artist.save
+      redirect_to(artists_path)
+    else
+      render :new
+    end
   end
-
 end

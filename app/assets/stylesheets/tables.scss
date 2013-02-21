@@ -1,0 +1,14 @@
+$cell_color1: #ff7f00;
+$cell_color2: #000000;
+
+table
+  {
+   .row0 td {
+      background-color: $cell_color1;
+      color: $cell_color2;
+    }
+    .row1 td {
+      background-color: $cell_color2;
+      color: $cell_color1;
+    }
+  }

@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_filter :check_if_admin, :only => [:show, :update, :new]
+  before_filter :check_if_admin, :only => [:new, :create, :edit, :update]
 
   def index
     @albums = Album.order(:name)
@@ -19,10 +19,6 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
   end
 
-  def check_if_admin
-    redirect_to(root_path) if @auth.nil? || !@auth.is_admin # if you're not logged or you're not an admin
-  end
-
   def update
     album = Album.find(params[:id])
     album.update_attributes(params[:album])
@@ -30,8 +26,12 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    album = Album.create(params[:album])
-    redirect_to(albums_path)
+    @album = Album.new(params[:album])
+    if @album.save
+      redirect_to(albums_path)
+    else
+      render :new
+    end
   end
 
 end

@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_filter :check_if_admin, :only => [:show, :update, :new]
+  before_filter :check_if_admin, :only => [:new, :create, :edit, :update]
 
   def index
     @genres = Genre.order(:name)
@@ -19,10 +19,6 @@ class GenresController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
-  def check_if_admin
-    redirect_to(root_path) if @auth.nil? || !@auth.is_admin # if you're not logged or you're not an admin
-  end
-
   def update
     genre = Genre.find(params[:id])
     genre.update_attributes(params[:genre])
@@ -30,8 +26,11 @@ class GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.create(params[:genre])
-    redirect_to(genres_path)
+    @genre = Genre.new(params[:genre])
+    if @genre.save
+      redirect_to(genres_path)
+    else
+      render :new
+    end
   end
-
 end

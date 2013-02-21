@@ -43,10 +43,5 @@ class UsersController < ApplicationController
   def check_if_logged_in
     redirect_to(root_path) if @auth.nil?
   end
-
-  def check_if_admin
-    redirect_to(root_path) if @auth.nil? || !@auth.is_admin # if you're not logged or you're not an admin
-  end
-
 end
 

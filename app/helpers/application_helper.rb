@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def is_admin
+    @auth.present? && @auth.is_admin
+  end
+
   def intellinav
     links = ""
 
@@ -14,4 +18,7 @@ module ApplicationHelper
       "<li> #{link_to('Log in', login_path)}</li>"
     end
   end
+
+
+
 end
