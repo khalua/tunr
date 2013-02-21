@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_filter :check_if_admin, :only => [:create, :update, :new, :edit]
+  before_filter :check_if_admin, :only => [:new, :create, :edit, :update]
 
   def index
     @artists = Artist.order(:name)
@@ -11,11 +11,11 @@ class ArtistsController < ApplicationController
 
   def edit
     @artist = Artist.find(params[:id])
-    render :new
   end
 
   def show
     @artist = Artist.find(params[:id])
+    @songs = @artist.songs
   end
 
   def update

@@ -7,12 +7,10 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
-    render :show
   end
 
   def edit
     @album = Album.find(params[:id])
-    render :new
   end
 
   def show

@@ -1,0 +1,11 @@
+.row
+  .two.columns
+    %table
+      %th Song name
+      %th
+      %th Album name
+      %tr
+        %td= @song.name
+        %td= audio_tag(@song.filename, :controls => true )
+        %td= @album.name
+  .ten.columns

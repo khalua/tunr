@@ -1,9 +1,7 @@
-.row
-  .eight.columns
-    = form_for @artist do |f|
-      = f.label :name
-      = f.text_field :name
-      = f.label :image
-      = f.text_field :image
-      = f.submit :class => 'button radius'
-  .four.columns
+%h1= @artist.name
+= image_tag(@artist.image)
+
+%table
+  - @songs.each do |song|
+    %tr
+      %td= link_to(song.name, song)

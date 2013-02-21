@@ -7,16 +7,15 @@ class GenresController < ApplicationController
 
   def new
     @genre = Genre.new
-    render :show
   end
 
   def edit
     @genre = Genre.find(params[:id])
-    render :new
   end
 
   def show
     @genre = Genre.find(params[:id])
+    @songs = @genre.songs
   end
 
   def update

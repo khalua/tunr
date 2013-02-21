@@ -8,8 +8,8 @@
         %th edit
       - @artists.each do |artist|
         %tr{:class => cycle('row0', 'row1')}
-          %td= artist.name
+          %td= link_to(artist.name,artist)
           %td= image_tag(artist.image)
           - if is_admin
-            %td= link_to('Edit', artist )
+            %td= link_to('Edit', edit_artist_path(artist) )
   #eight.columns

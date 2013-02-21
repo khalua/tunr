@@ -1,0 +1,16 @@
+.row
+  .five.columns
+    = render(:partial => 'shared/errors', :locals => {:object => @artist})
+    = form_for @artist do |f|
+      = f.label :name
+      = f.text_field :name
+      = f.label :image
+      = f.text_field :image
+      = f.submit :class => 'button radius'
+      %br
+      %h3 Album
+      - Album.all.each do |album|
+        = album.name
+        = check_box_tag 'artist[album_ids][]',album.id, album.in?(@artist.albums)
+        %br
+  .seven.columns

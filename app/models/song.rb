@@ -13,7 +13,7 @@
 #
 
 class Song < ActiveRecord::Base
-  attr_accessible :name, :image, :filename
+  attr_accessible :name, :image, :filename, :genre_ids
   belongs_to  :album
   belongs_to  :artist
   has_and_belongs_to_many :mixtapes

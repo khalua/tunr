@@ -8,14 +8,17 @@ Mixtape.delete_all
 g1 = Genre.create(:name => 'Classical')
 g2 = Genre.create(:name => 'Rock')
 g3 = Genre.create(:name => 'Top 40')
+g4 = Genre.create(:name => 'Classic rock')
 
-s1 = Song.create(:name => 'Thriller')
-s2 = Song.create(:name => 'Billie Jean')
-s3 = Song.create(:name => 'Smells Like Teen Spirit')
+s1 = Song.create(:name => 'Thriller', :filename => 'thriller.mp3')
+s2 = Song.create(:name => 'Billie Jean', :filename => 'billie_jean.mp3')
+s3 = Song.create(:name => 'Smells Like Teen Spirit', :filename => 'smells_like_teen_spirit.mp3')
+s4 = Song.create(:name => 'Ticket to Ride', :filename => 'ticket_to_ride.mp3')
 
 a1 = Album.create(:name => 'Thriller', :image => 'http://niceheart.files.wordpress.com/2007/06/thriller.jpg?w=535')
 a2 = Album.create(:name => 'Nevermind', :image => 'http://rockhall.com/media/assets/blog_posts/nirvana-nevermind.jpg')
 a3 = Album.create(:name => 'The White Album', :image => 'http://1.bp.blogspot.com/_3cGepgvcsuo/SSiwb3sPd8I/AAAAAAAAAwI/mXrjbFOoidQ/s200/WHITE+ALBUM.jpg')
+a4 = Album.create(:name => 'Help!', :image => 'http://24.media.tumblr.com/tumblr_mb8a5bCORj1rrgq3yo1_cover.jpg')
 
 r1 = Artist.create(:name => 'Michael Jackson', :image => 'http://static.gigwise.com/artists/Image/200michael-history18.jpg')
 r2 = Artist.create(:name => 'Nirvana', :image => 'http://images.artistdirect.com/Images/artd/amg/music/bio/473656_nirvana2004_200x200.jpg')
@@ -36,9 +39,12 @@ m3 = Mixtape.create(:name => 'Old School')
 #note that there are no explicit save below
 r1.songs << s1 << s2
 r2.songs = [s3]
+r3.songs << s4
 a1.songs = [s1, s2]
 a2.songs << s3
+a4.songs << s4
 g3.songs = [s1, s2, s3]
+g4.songs << s4
 u1.mixtapes = [m1, m2]
 u3.mixtapes = [m3]
 m3.songs = [s1, s2, s3]
