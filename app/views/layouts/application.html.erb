@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Tunr</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <!-- Header and Nav -->
+    <%= render :partial => 'layouts/nav' %>
+  <!-- End Header and Nav -->
+  <% if flash[:notice].present? %>
+  <div class='row'>
+    <div class="five columns alert-box alert">
+      <%= flash[:notice] %>
+    </div>
+    <div class="seven columns"></div>
+  </div>
+  <% end %>
+  <div class='row'>
+    <div class="twelve columns">
+      <%= yield %>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="six columns">
+          <ul class="link-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+     $(window).load(function() {
+         $('#slider').orbit();
+     });
+  </script>
+
+</body>
+</html>
