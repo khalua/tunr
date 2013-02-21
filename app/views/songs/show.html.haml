@@ -1,11 +1,10 @@
 .row
-  .two.columns
+  .twelve.columns
     %table
       %th Song name
-      %th
+      %th The playah
       %th Album name
       %tr
         %td= @song.name
         %td= audio_tag(@song.filename, :controls => true )
         %td= @album.name
-  .ten.columns

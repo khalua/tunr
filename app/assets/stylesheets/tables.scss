@@ -3,6 +3,9 @@ $cell_color2: #000000;
 
 table
   {
+    a {
+      font-size: 20px;
+    }
    .row0 td {
       background-color: $cell_color1;
       color: $cell_color2;

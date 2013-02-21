@@ -4,11 +4,13 @@
   #two.columns
     %table
       %th name
+      %th the playah
       - if is_admin
         %th edit
       - @songs.each do |song|
         %tr{:class => cycle('row0', 'row1')}
           %td= link_to(song.name,song)
+          %td= audio_tag(song.filename, :controls => true )
           - if is_admin
             %td= link_to('Edit', edit_song_path(song) )
   #eight.columns
