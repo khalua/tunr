@@ -1,0 +1,15 @@
+.row
+  #two.columns
+    = link_to('New Album', new_album_path) if @auth.try(:is_admin)
+  #two.columns
+    %table
+      %th name
+      - if @auth.try(:is_admin)
+        %th edit
+      - @albums.each do |album|
+        %tr
+          %td= album.name
+          %td= image_tag(album.image)
+          - if @auth.try(:is_admin)
+            %td= link_to('Edit', album )
+  #eight.columns

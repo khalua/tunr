@@ -1,0 +1,14 @@
+.row
+  #two.columns
+    = link_to('New Genre', new_genre_path) if @auth.try(:is_admin)
+  #two.columns
+    %table
+      %th name
+      - if @auth.try(:is_admin)
+        %th edit
+      - @genres.each do |genre|
+        %tr
+          %td= genre.name
+          - if @auth.try(:is_admin)
+            %td= link_to('Edit', genre )
+  #eight.columns

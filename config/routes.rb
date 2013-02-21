@@ -5,6 +5,8 @@ R20130218Tunr::Application.routes.draw do
       get 'edit'
     end
   end
+  resources :artists, :albums, :genres
+
 
   get '/login'  => 'session#new'
   post '/login' => 'session#create'

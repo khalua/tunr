@@ -1,0 +1,15 @@
+.row
+  #two.columns
+    = link_to('New Artist', new_artist_path) if @auth.try(:is_admin)
+  #two.columns
+    %table
+      %th name
+      - if @auth.try(:is_admin)
+        %th edit
+      - @artists.each do |artist|
+        %tr
+          %td= artist.name
+          %td= image_tag(artist.image)
+          - if @auth.try(:is_admin)
+            %td= link_to('Edit', artist )
+  #eight.columns
