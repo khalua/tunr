@@ -3,6 +3,20 @@ module ApplicationHelper
     @auth.present? && @auth.is_admin
   end
 
+  def can_purchase
+    @song.cost <= @auth.balance
+  end
+
+  def purchased_songs
+    songs = []
+    @auth.mixtapes.each do |mixtape|
+      mixtape.songs.each do |song|
+        songs << song.name
+      end
+    end
+  end
+
+
   def intellinav
     links = ""
 

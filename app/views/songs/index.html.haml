@@ -1,16 +1,34 @@
+%h1 Songs!
+
+%h3 Songs you own
 .row
-  #two.columns
-    = link_to('New Song', new_song_path, :class => 'button radius tiny') if is_admin
-  #two.columns
+  .two.columns
+
+  .eight.columns
     %table
       %th name
-      %th the playah
+      - @auth.mixtapes.each do |mixtape|
+        - mixtape.songs.each do |song|
+          %tr
+            %td= link_to(song.name, song)
+  .two.columns
+
+
+
+%h3 Songs you don't own
+.row
+  .two.columns
+    = link_to('New Song', new_song_path, :class => 'button radius tiny') if is_admin
+  .eight.columns
+    %table
+      %th name
+      %th artist
       - if is_admin
         %th edit
       - @songs.each do |song|
         %tr{:class => cycle('row0', 'row1')}
           %td= link_to(song.name,song)
-          %td= audio_tag(song.filename, :controls => true )
+          %td= song.artist.name
           - if is_admin
             %td= link_to('Edit', edit_song_path(song) )
-  #eight.columns
+  .two.columns

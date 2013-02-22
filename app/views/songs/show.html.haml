@@ -8,3 +8,10 @@
         %td= @song.name
         %td= audio_tag(@song.filename, :controls => true )
         %td= @album.name
+.row
+  .two.columns
+    = number_to_currency(@song.cost)
+  .two.columns
+    - if can_purchase
+      = link_to('Buy Song', purchase_song_path, :class => 'button' )
+  .eight.columns

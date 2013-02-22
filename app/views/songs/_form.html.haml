@@ -6,9 +6,11 @@
       = f.text_field :name
       = f.label :filename
       = f.text_field :filename
+      = f.label :cost
+      = f.text_field :cost
       = f.submit :class => 'button radius'
       %br
-      %h3 Album
+      %h3 Genre
       - Genre.all.each do |genre|
         = genre.name
         = check_box_tag 'song[genre_ids][]',genre.id, genre.in?(@song.genres)

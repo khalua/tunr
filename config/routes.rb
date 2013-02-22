@@ -5,7 +5,12 @@ R20130218Tunr::Application.routes.draw do
       get 'edit'
     end
   end
-  resources :artists, :albums, :genres, :songs, :mixtapes
+  resources :artists, :albums, :genres, :mixtapes
+  resources :songs do
+          member do
+     get 'purchase'
+    end
+  end
 
 
   get '/login'  => 'session#new'
