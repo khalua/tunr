@@ -6,6 +6,18 @@ module ApplicationHelper
   def intellinav
     links = ""
 
+    if @auth.present? && !@auth.is_admin
+      links += "<li class='has-flyout'>"
+        links += "<a href='#'>Your Mixtapes</a><span> </span>"
+          links += "<ul class ='flyout'>"
+            @auth.mixtapes.each do |mixtape|
+              links += "<li>#{link_to(mixtape.name, mixtape)}</li>"
+            end
+            links += "<li>#{link_to('New Mixtape', new_mixtape_path)}</li>"
+        links += "</ul>"
+      links += "</li>"
+    end
+
     if @auth.present? #if you're not logged in, auth is nil
       if @auth.is_admin #doesn't end in a question mark b/c it's not a function.
         links += "<li>#{link_to('Users', users_path)} </li>"

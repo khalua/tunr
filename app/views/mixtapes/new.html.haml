@@ -1,0 +1,8 @@
+.row
+  .five.colums
+    = form_for @mixtape do |f|
+      = f.label :name, 'Mixtape name'
+      = f.text_field :name
+      = f.hidden_field :user_id, :value => @auth.id
+      = f.submit :class => 'button radius'
+  .seven.columns
