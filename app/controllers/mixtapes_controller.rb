@@ -9,4 +9,8 @@ class MixtapesController < ApplicationController
     @mixtape = Mixtape.create(params[:mixtape])
     redirect_to(mixtapes_path)
   end
+  def show
+    @mixtape = Mixtape.find(params[:id])
+    @songs = @mixtape.songs
+  end
 end

@@ -6,13 +6,14 @@
 
   .eight.columns
     %table
-      %th name
-      - @auth.mixtapes.each do |mixtape|
-        - mixtape.songs.each do |song|
-          %tr
-            %td= link_to(song.name, song)
-  .two.columns
+      %th Name
+      %th Artist
+      - owned_songs.each do |song|
+        %tr{:class => cycle('row0', 'row1')}
+          %td= link_to(song.name, song)
+          %td= link_to(song.artist.name, song.artist)
 
+  .two.columns
 
 
 %h3 Songs you don't own
@@ -25,10 +26,10 @@
       %th artist
       - if is_admin
         %th edit
-      - @songs.each do |song|
+      - not_owned_songs.each do |song|
         %tr{:class => cycle('row0', 'row1')}
           %td= link_to(song.name,song)
-          %td= song.artist.name
+          %td= link_to(song.artist.name, song.artist)
           - if is_admin
             %td= link_to('Edit', edit_song_path(song) )
   .two.columns

@@ -6,8 +6,9 @@
       %th Album name
       %tr
         %td= @song.name
-        %td= audio_tag(@song.filename, :controls => true )
-        %td= @album.name
+        - if @song
+          %td= audio_tag(@song.filename, :controls => true )
+          %td= @album.name
 .row
   .two.columns
     = number_to_currency(@song.cost)

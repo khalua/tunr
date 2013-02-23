@@ -7,15 +7,19 @@ module ApplicationHelper
     @song.cost <= @auth.balance
   end
 
-  def purchased_songs
-    songs = []
+  def owned_songs
+    my_songs = []
     @auth.mixtapes.each do |mixtape|
       mixtape.songs.each do |song|
-        songs << song.name
+        my_songs << song
       end
     end
+    my_songs
   end
 
+  def not_owned_songs
+    Song.all - owned_songs
+  end
 
   def intellinav
     links = ""

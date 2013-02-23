@@ -36,8 +36,13 @@ class SongsController < ApplicationController
 
   def purchase
     @song = Song.find(params[:id])
+  end
+
+  def buy
+    @song = Song.find(params[:id])
     if @song.cost <= @auth.balance
         @auth.balance -= @song.cost
+        @auth.save
     else
       redirect_to(songs_path)
     end

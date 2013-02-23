@@ -7,8 +7,9 @@ R20130218Tunr::Application.routes.draw do
   end
   resources :artists, :albums, :genres, :mixtapes
   resources :songs do
-          member do
-     get 'purchase'
+    member do
+      get 'purchase'
+      post 'buy'
     end
   end
 
