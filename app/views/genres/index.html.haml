@@ -1,7 +1,12 @@
 .row
-  #two.columns
+  .two.columns
+  .two.columns
+    %h2 Genres
+  .eight.columns
+.row
+  .two.columns
     = link_to('New Genre', new_genre_path, :class => 'button radius tiny') if is_admin
-  #two.columns
+  .two.columns
     %table
       %th name
       - if is_admin
@@ -11,4 +16,4 @@
           %td= link_to(genre.name, genre)
           - if is_admin
             %td= link_to('Edit', edit_genre_path(genre) )
-  #eight.columns
+  .eight.columns

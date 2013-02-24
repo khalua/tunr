@@ -1,5 +1,12 @@
-%h1= @genre.name
-%table
-  - @songs.each do |song|
-    %tr
-      %td= link_to(song.name ,song)
+.row
+  .two.columns
+  .two.columns
+    %h1= @genre.name
+    %table
+      %th Song Name
+      %th Artist
+      - @songs.each do |song|
+        %tr
+          %td= link_to(song.name ,song)
+          %td= link_to(song.artist.name, song.artist)
+  .eight.columns

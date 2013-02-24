@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path) if @auth.nil? || !@auth.is_admin
   end
 
+  def check_if_logged_in
+    redirect_to(forbidden_path) if @auth.nil?
+  end
+
 end

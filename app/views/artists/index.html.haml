@@ -1,7 +1,9 @@
+%h1 The Hottest Artists
+
 .row
-  #two.columns
+  .two.columns
     = link_to('New Artist', new_artist_path, :class => 'button radius tiny') if is_admin
-  #two.columns
+  .seven.columns
     %table
       %th name
       - if is_admin
@@ -12,4 +14,4 @@
           %td= image_tag(artist.image)
           - if is_admin
             %td= link_to('Edit', edit_artist_path(artist) )
-  #eight.columns
+  .three.columns

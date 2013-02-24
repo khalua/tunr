@@ -2,17 +2,20 @@
   .twelve.columns
     %table
       %th Song name
-      %th The playah
+      %th Tunr web player &#169;
       %th Album name
+      %th Cost
       %tr
         %td= @song.name
-        - if @song
+        - if owned_songs.include?(@song)
           %td= audio_tag(@song.filename, :controls => true )
-          %td= @album.name
+        -else
+          %td Purchase song to play
+        %td= @album.name
+        %td= number_to_currency(@song.cost)
+
 .row
-  .two.columns
-    = number_to_currency(@song.cost)
-  .two.columns
-    - if can_purchase
-      = link_to('Buy Song', purchase_song_path, :class => 'button' )
-  .eight.columns
+- if !owned_songs.include?(@song) && can_purchase
+  .twelve.columns
+    = link_to('Purchase Song', purchase_song_path, :class => 'button' )
+    / = link_to('Purchase Album', purchase_album_path, :class => 'button')

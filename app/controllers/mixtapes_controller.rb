@@ -11,6 +11,12 @@ class MixtapesController < ApplicationController
   end
   def show
     @mixtape = Mixtape.find(params[:id])
-    @songs = @mixtape.songs
   end
+
+  def update
+    mixtape = Mixtape.find(params[:id])
+    mixtape.update_attributes(params[:mixtape])
+    redirect_to(mixtapes_path)
+  end
+
 end

@@ -1,10 +1,16 @@
-$cell_color1: #ff7f00;
+$cell_color1: #222222;
 $cell_color2: #000000;
 
 table
   {
+    width: 800px;
     a {
       font-size: 20px;
+    }
+    th {
+      font-size: 20px;
+      text-align: left;
+      padding:  10px 0 10px 12px;
     }
    .row0 td {
       background-color: $cell_color1;

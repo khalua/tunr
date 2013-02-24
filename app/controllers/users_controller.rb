@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    render :new
+  end
+
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -39,9 +44,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private #because it's not an action
-  def check_if_logged_in
-    redirect_to(root_path) if @auth.nil?
+  def forbidden
   end
 end
 

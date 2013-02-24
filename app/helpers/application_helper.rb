@@ -7,7 +7,7 @@ module ApplicationHelper
     @song.cost <= @auth.balance
   end
 
-  def owned_songs
+  def owned_songs  #this is bullshit. definitely belongs in the model, but we werent shown how to do this.
     my_songs = []
     @auth.mixtapes.each do |mixtape|
       mixtape.songs.each do |song|
@@ -21,12 +21,20 @@ module ApplicationHelper
     Song.all - owned_songs
   end
 
+  def album_artists #this is bullshit. definitely belongs in the model, but we werent shown how to do this.
+    album_artists = []
+    @album.songs.each do |song|
+      album_artists << song.artist.name
+    end
+    album_artists.uniq.join
+  end
+
   def intellinav
     links = ""
 
     if @auth.present? && !@auth.is_admin
       links += "<li class='has-flyout'>"
-        links += "<a href='#'>Your Mixtapes</a><span> </span>"
+        links += "#{link_to('Your Mixtapes', mixtapes_path)}"
           links += "<ul class ='flyout'>"
             @auth.mixtapes.each do |mixtape|
               links += "<li>#{link_to(mixtape.name, mixtape)}</li>"

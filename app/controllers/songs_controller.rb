@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_filter :check_if_admin, :only => [:new, :create, :edit, :update]
+  before_filter :check_if_logged_in, :only => [:show]
 
   def index
     @songs = Song.order(:name)
@@ -39,10 +40,12 @@ class SongsController < ApplicationController
   end
 
   def buy
-    @song = Song.find(params[:id])
-    if @song.cost <= @auth.balance
-        @auth.balance -= @song.cost
+    song = Song.find(params[:id])
+    if song.cost <= @auth.balance
+        @auth.balance -= song.cost
         @auth.save
+        song.update_attributes(params[:song])
+
     else
       redirect_to(songs_path)
     end

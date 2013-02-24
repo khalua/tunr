@@ -1,6 +1,7 @@
 %h1= "Purchasing #{@song.name}"
-%h3 Mixtape
+%h3 Add to the following Mixtapes
 = form_tag("/songs/#{@song.id}/buy/")
 - Mixtape.all.each do |mixtape|
   = mixtape.name
   = check_box_tag 'song[mixtape_ids][]',mixtape.id, mixtape.in?(@song.mixtapes)
+= submit_tag

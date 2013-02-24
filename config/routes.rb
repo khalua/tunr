@@ -13,7 +13,7 @@ R20130218Tunr::Application.routes.draw do
     end
   end
 
-
+  get '/forbidden' => 'session#forbidden'
   get '/login'  => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

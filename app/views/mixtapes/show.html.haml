@@ -1,13 +1,16 @@
-%h1= @mixtape.name
-
-.two.columns
-.eight.columns
-  %table
-    %th name
-    %th the playah
-    - @songs.each do |song|
-      %tr{:class => cycle('row0', 'row1')}
-        %td= link_to(song.name,song)
-        %td= audio_tag(song.filename, :controls => true )
-        %td= link_to('Edit', edit_song_path(song) )
-.two.columns
+%h1= "Mixtape name: #{@mixtape.name}"
+.lloyd_background
+  .row
+    .twelve.columns
+      %table
+        %th name
+        %th the playah
+        - owned_songs.each do |song|
+          %tr{:class => cycle('row0', 'row1')}
+            %td= link_to(song.name,song)
+            %td= audio_tag(song.filename, :controls => true )
+  .row
+    .twelve.columns
+      %h3 Add songs you own to this mixtape
+      - owned_songs.each do |song|
+        = song.name

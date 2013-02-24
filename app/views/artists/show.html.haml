@@ -1,7 +1,11 @@
-%h1= @artist.name
-= image_tag(@artist.image)
-
-%table
-  - @songs.each do |song|
-    %tr
-      %td= link_to(song.name, song)
+.row
+  .two.columns
+  .eight.columns
+    %h1= @artist.name
+    = image_tag(@artist.image)
+    %h3 Songs in our catalog by this artist
+    %table
+      - @songs.each do |song|
+        %tr
+          %td= link_to(song.name, song)
+  .two.columns

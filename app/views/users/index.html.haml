@@ -8,9 +8,9 @@
       %tr
         %td
           - if user.is_admin
-            %span.label.alert= user.name
+            %span.label.alert= link_to(user.name, user)
           - else
-            %span.label.success= user.name
+            %span.label.success= link_to(user.name, user)
           %td= number_to_currency(user.balance)
           %td= image_tag(user.image)
           %td= link_to('Delete', user, :method => :delete, :confirm => "sure?", :class => 'button radius alert tiny') if user != @auth #@auth is who YOU are
